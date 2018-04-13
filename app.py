@@ -1,6 +1,7 @@
-from picamera import PiCamera
+# from picamera import PiCamera
 from sanic import Sanic
 from sanic.response import json
+import uuid
 
 app = Sanic()
 camera = PiCamera()
@@ -8,8 +9,10 @@ camera = PiCamera()
 
 @app.route('/capture')
 async def capture(request):
+    local_save_path = '/var/tmp/'
+    file_name = "{0}.jpg".format(uuid.uuid4().hex)
 
-    camera.capture('/home/pi/src/photo/image.jpg')
+    camera.capture(local_save_path + file_name)
 
     return json({'hello': 'world'})
 
