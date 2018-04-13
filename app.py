@@ -1,4 +1,4 @@
-# from picamera import PiCamera
+from picamera import PiCamera
 from sanic import Sanic
 from sanic.response import json
 import uuid
